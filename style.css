@@ -1,0 +1,249 @@
+:root {
+  --rojo-inst: #C8102E;
+  --azul-inst: #002868;
+  --amarillo-casco: #F4C430;
+  --fondo-oscuro: #0b132b;
+  --panel-oscuro: #1c2541;
+  --texto-claro: #f8fafc;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+body {
+  /* Capa oscura semitransparente + tu imagen de fondo centrada */
+  background: 
+    linear-gradient(rgba(11, 19, 43, 0.72), rgba(11, 19, 43, 0.85)),
+    url('img/imagen.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: var(--texto-claro);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+}
+
+.game-wrapper {
+  width: 100%;
+  max-width: 840px;
+  background: var(--panel-oscuro);
+  border: 3px solid var(--rojo-inst);
+  border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+}
+
+/* Barra Superior Institucional */
+.inst-header {
+  background: linear-gradient(90deg, var(--azul-inst), #001845);
+  border-bottom: 3px solid var(--amarillo-casco);
+  padding: 12px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-logo {
+  width: 50px;
+  height: 50px;
+  background: #ffffff;
+  border-radius: 50%;
+  padding: 3px;
+  border: 2px solid var(--rojo-inst);
+  object-fit: contain;
+}
+
+.brand-text h1 {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.3px;
+}
+
+.brand-text span {
+  font-size: 0.8rem;
+  color: var(--amarillo-casco);
+  font-weight: 600;
+}
+
+/* Indicadores HUD */
+.hud {
+  display: flex;
+  gap: 10px;
+}
+
+.hud-box {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 6px 12px;
+  border-radius: 8px;
+  text-align: center;
+  min-width: 68px;
+}
+
+.hud-box .label {
+  display: block;
+  font-size: 0.65rem;
+  color: #cbd5e1;
+  font-weight: 700;
+}
+
+.hud-box strong {
+  font-size: 1.05rem;
+  color: var(--amarillo-casco);
+}
+
+/* Contenedor de Canvas y Overlays */
+.canvas-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 800 / 520;
+  background: #090e1a;
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: none;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(9, 14, 26, 0.85);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  z-index: 10;
+}
+
+.overlay.hidden {
+  display: none;
+}
+
+.modal-card {
+  background: linear-gradient(145deg, #1e293b, #0f172a);
+  border: 2px solid var(--rojo-inst);
+  border-radius: 16px;
+  padding: 28px;
+  max-width: 440px;
+  text-align: center;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+}
+
+.logo-ring {
+  width: 110px;
+  height: 110px;
+  margin: 0 auto 14px;
+  background: #ffffff;
+  border-radius: 50%;
+  padding: 6px;
+  border: 4px solid var(--rojo-inst);
+  box-shadow: 0 0 20px rgba(200, 16, 46, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-ring img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.modal-card h2 {
+  font-size: 1.5rem;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.modal-card p {
+  font-size: 0.95rem;
+  color: #cbd5e1;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.controls-hint {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  font-size: 0.82rem;
+  color: var(--amarillo-casco);
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, var(--rojo-inst), #9b0b22);
+  color: #ffffff;
+  border: 2px solid var(--amarillo-casco);
+  padding: 12px 28px;
+  font-size: 1rem;
+  font-weight: 800;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(200, 16, 46, 0.6);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+/* Pie de Página Institucional */
+.inst-footer {
+  background: linear-gradient(90deg, #001845, var(--azul-inst));
+  border-top: 3px solid var(--amarillo-casco);
+  padding: 12px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: #cbd5e1;
+}
+
+.inst-footer strong {
+  color: var(--amarillo-casco);
+  font-weight: 700;
+}
+
+.footer-left {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-left .separator {
+  color: var(--rojo-inst);
+  font-weight: bold;
+}
+
+@media (max-width: 600px) {
+  .inst-footer {
+    justify-content: center;
+    text-align: center;
+  }
+}
